@@ -41,12 +41,13 @@ export default async function BlogDetailPage({ params }) {
 
   // Danh sách hình ảnh minh họa chất lượng cao
   const sampleImages = [
-    "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80",
-    "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80",
-    "https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?auto=format&fit=crop&w=1200&q=80",
-    "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1200&q=80",
-    "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80",
+    "/images/hero.jpg",
+    "/images/founder-1.jpg",
+    "/images/founder-2.jpg",
+    "/images/founder-3.jpg",
+    "/images/latest-2.jpg",
   ];
+
 
   const heroImage = sampleImages[(Number(id) - 1) % sampleImages.length];
 

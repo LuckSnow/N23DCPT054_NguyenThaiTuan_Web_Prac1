@@ -23,21 +23,21 @@ export default async function HomePage() {
   const allPosts = await getPosts();
 
   // Hình ảnh chất lượng cao tương đồng giao diện mẫu
-  const featuredImage =
-    "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80";
+  const featuredImage = "/images/hero.jpg";
 
   const latestImages = [
-    "https://images.unsplash.com/photo-1548767797-d8c844163c4c?auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80",
-    "https://images.unsplash.com/photo-1473580044384-7ba9967a16a0?auto=format&fit=crop&w=400&q=80",
+    "/images/latest-1.jpg",
+    "/images/latest-2.jpg",
+    "/images/latest-3.jpg",
+    "/images/latest-4.jpg",
   ];
 
   const foundersImages = [
-    "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
+    "/images/founder-1.jpg",
+    "/images/founder-2.jpg",
+    "/images/founder-3.jpg",
   ];
+
 
   // Phân bổ bài viết cho các khu vực
   const featuredPost = allPosts[0] || {
