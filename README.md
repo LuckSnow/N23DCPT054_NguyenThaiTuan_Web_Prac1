@@ -3,7 +3,7 @@
 ## Thông tin sinh viên
 - **Họ và tên:** Nguyễn Thái Tuấn
 - **Mã sinh viên:** N23DCPT054
-- **Lớp:** N23DCPT054
+- **Lớp:** D23CQPTUD01-N
 - **Tên Repository:** N23DCPT054_NguyenThaiTuan_Web_Prac1
 
 ---
