@@ -3,7 +3,7 @@
 ## Thông tin sinh viên
 - **Họ và tên:** Nguyễn Thái Tuấn
 - **Mã sinh viên:** N23DCPT054
-- **Lớp / Nhóm thực hành:** Nhóm 2 - Thực hành Lập trình Web
+- **Lớp:** N23DCPT054
 - **Tên Repository:** N23DCPT054_NguyenThaiTuan_Web_Prac1
 
 ---
