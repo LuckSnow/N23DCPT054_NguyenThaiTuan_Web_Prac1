@@ -30,31 +30,34 @@ export default function Header() {
           </Link>
         </nav>
 
-        {/* Right CTA Actions */}
+        {/* Right CTA Actions: Giữ nguyên giao diện đẹp chuẩn mẫu, click không điều hướng sang trang khác */}
         <div className="hidden lg:flex items-center space-x-4 xl:space-x-6 shrink-0">
-          <Link
-            href="/login"
-            className="flex items-center gap-1 text-xs font-semibold uppercase tracking-widest text-gray-800 hover:text-gray-950 transition whitespace-nowrap"
+          <button
+            type="button"
+            onClick={(e) => e.preventDefault()}
+            className="flex items-center gap-1 text-xs font-semibold uppercase tracking-widest text-gray-800 hover:text-gray-950 transition whitespace-nowrap cursor-pointer"
           >
             <span>Login</span>
             <span className="text-sm font-normal">↗</span>
-          </Link>
-          <Link
-            href="/get-started"
-            className="bg-[#944327] hover:bg-[#7e3820] text-white text-xs font-semibold uppercase tracking-wider px-4 xl:px-5 py-2.5 rounded-full transition shadow-sm whitespace-nowrap"
+          </button>
+          <button
+            type="button"
+            onClick={(e) => e.preventDefault()}
+            className="bg-[#944327] hover:bg-[#7e3820] text-white text-xs font-semibold uppercase tracking-wider px-4 xl:px-5 py-2.5 rounded-full transition shadow-sm whitespace-nowrap cursor-pointer"
           >
             Get Started
-          </Link>
+          </button>
         </div>
 
         {/* Mobile / Tablet menu button (dành cho màn hình < 1024px bao gồm iPad Mini) */}
         <div className="lg:hidden flex items-center gap-3 shrink-0">
-          <Link
-            href="/get-started"
-            className="bg-[#944327] hover:bg-[#7e3820] text-white text-xs font-semibold uppercase px-3.5 py-1.5 rounded-full transition"
+          <button
+            type="button"
+            onClick={(e) => e.preventDefault()}
+            className="bg-[#944327] hover:bg-[#7e3820] text-white text-xs font-semibold uppercase px-3.5 py-1.5 rounded-full transition cursor-pointer"
           >
             Get Started
-          </Link>
+          </button>
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -88,9 +91,16 @@ export default function Header() {
             <Link href="/" className="py-2 text-gray-950 font-bold" onClick={() => setMobileMenuOpen(false)}>
               Blog
             </Link>
-            <Link href="/login" className="py-2 text-gray-800 flex items-center gap-1" onClick={() => setMobileMenuOpen(false)}>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                setMobileMenuOpen(false);
+              }}
+              className="py-2 text-gray-800 hover:text-gray-950 flex items-center gap-1 text-left uppercase text-xs font-semibold tracking-widest cursor-pointer"
+            >
               <span>Login</span> ↗
-            </Link>
+            </button>
           </nav>
         </div>
       )}

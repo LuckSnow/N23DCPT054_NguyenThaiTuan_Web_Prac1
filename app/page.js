@@ -1,7 +1,8 @@
 import Header from "@/components/Header";
 import FeaturedCard from "@/components/FeaturedCard";
 import LatestPostItem from "@/components/LatestPostItem";
-import BlogCard from "@/components/BlogCard";
+import FoundersSection from "@/components/FoundersSection";
+import { getPostImage } from "@/lib/blogImages";
 
 // Server Component fetch dữ liệu từ JSONPlaceholder theo yêu cầu bài học
 async function getPosts() {
@@ -22,23 +23,6 @@ async function getPosts() {
 export default async function HomePage() {
   const allPosts = await getPosts();
 
-  // Hình ảnh chất lượng cao tương đồng giao diện mẫu
-  const featuredImage = "/images/hero.jpg";
-
-  const latestImages = [
-    "/images/latest-1.jpg",
-    "/images/latest-2.jpg",
-    "/images/latest-3.jpg",
-    "/images/latest-4.jpg",
-  ];
-
-  const foundersImages = [
-    "/images/founder-1.jpg",
-    "/images/founder-2.jpg",
-    "/images/founder-3.jpg",
-  ];
-
-
   // Phân bổ bài viết cho các khu vực
   const featuredPost = allPosts[0] || {
     id: 1,
@@ -49,20 +33,21 @@ export default async function HomePage() {
     readTime: "10 min read",
   };
 
-  const latestPosts = allPosts.slice(1, 5).map((post, idx) => ({
+  const latestPosts = allPosts.slice(1, 5).map((post) => ({
     ...post,
     category: "Category",
     date: "Aug 10",
     readTime: "10 min read",
-    image: latestImages[idx % latestImages.length],
+    image: getPostImage(post.id),
   }));
 
-  const foundersPosts = allPosts.slice(5, 8).map((post, idx) => ({
+  // Lấy các bài viết cho Founders corner (bao gồm cả trang 1, 2,...)
+  const foundersPosts = allPosts.slice(5, 20).map((post) => ({
     ...post,
     category: "Category",
     date: "Aug 10",
     readTime: "10 min read",
-    image: foundersImages[idx % foundersImages.length],
+    image: getPostImage(post.id),
   }));
 
   return (
@@ -84,7 +69,7 @@ export default async function HomePage() {
                   date: "Aug 10",
                   readTime: "10 min read",
                 }}
-                image={featuredImage}
+                image={getPostImage(featuredPost.id)}
               />
             </div>
 
@@ -102,95 +87,8 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* Khối chính 2: Founders Corner (Lưới 3 cột) */}
-        <section className="mt-14 sm:mt-16">
-          {/* Header khu vực Founders corner kèm 2 nút điều hướng tròn */}
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight">
-              Founders corner
-            </h2>
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:text-gray-800 hover:border-gray-500 transition cursor-pointer"
-                aria-label="Previous"
-              >
-                <span className="text-sm">←</span>
-              </button>
-              <button
-                type="button"
-                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-gray-300 flex items-center justify-center text-gray-500 hover:text-gray-800 hover:border-gray-500 transition cursor-pointer"
-                aria-label="Next"
-              >
-                <span className="text-sm">→</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Lưới 3 cột chuẩn Responsive (1 cột mobile, 3 cột desktop) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            {foundersPosts.map((post) => (
-              <BlogCard key={post.id} post={post} image={post.image} />
-            ))}
-          </div>
-        </section>
-
-        {/* Phân trang (Pagination) theo mẫu giao diện */}
-        <section className="mt-14 sm:mt-16 pt-8 border-t border-gray-100">
-          <div className="flex items-center justify-between max-w-sm mx-auto text-sm font-medium text-gray-500">
-            {/* Nút lùi */}
-            <button
-              type="button"
-              className="p-2 text-gray-600 hover:text-black transition cursor-pointer"
-              aria-label="Previous page"
-            >
-              ←
-            </button>
-
-            {/* Dãy số trang */}
-            <div className="flex items-center space-x-3 sm:space-x-4">
-              <button
-                type="button"
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#1c1917] text-white flex items-center justify-center text-xs font-semibold cursor-pointer"
-              >
-                1
-              </button>
-              <button
-                type="button"
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full text-gray-600 hover:bg-gray-100 flex items-center justify-center text-xs font-semibold transition cursor-pointer"
-              >
-                2
-              </button>
-              <button
-                type="button"
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full text-gray-600 hover:bg-gray-100 flex items-center justify-center text-xs font-semibold transition cursor-pointer"
-              >
-                3
-              </button>
-              <button
-                type="button"
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full text-gray-600 hover:bg-gray-100 flex items-center justify-center text-xs font-semibold transition cursor-pointer"
-              >
-                4
-              </button>
-              <button
-                type="button"
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full text-gray-600 hover:bg-gray-100 flex items-center justify-center text-xs font-semibold transition cursor-pointer"
-              >
-                5
-              </button>
-            </div>
-
-            {/* Nút tiến */}
-            <button
-              type="button"
-              className="p-2 text-gray-600 hover:text-black transition cursor-pointer"
-              aria-label="Next page"
-            >
-              →
-            </button>
-          </div>
-        </section>
+        {/* Khối chính 2: Founders Corner kèm phân trang tương tác (trang 1, trang 2,...) */}
+        <FoundersSection posts={foundersPosts} />
       </div>
     </main>
   );

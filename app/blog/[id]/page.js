@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
 import Badge from "@/components/Badge";
+import { getPostImage } from "@/lib/blogImages";
 
 // Fetch chi tiết bài viết từ JSONPlaceholder theo id
 async function getPost(id) {
@@ -39,17 +40,9 @@ export default async function BlogDetailPage({ params }) {
     notFound();
   }
 
-  // Danh sách hình ảnh minh họa chất lượng cao
-  const sampleImages = [
-    "/images/hero.jpg",
-    "/images/founder-1.jpg",
-    "/images/founder-2.jpg",
-    "/images/founder-3.jpg",
-    "/images/latest-2.jpg",
-  ];
+  // Hình ảnh đồng bộ chính xác 100% với hình ảnh của bài viết ở trang chủ
+  const heroImage = getPostImage(id);
 
-
-  const heroImage = sampleImages[(Number(id) - 1) % sampleImages.length];
 
   return (
     <main className="min-h-screen bg-[#f4ece4] py-4 px-2 sm:py-8 sm:px-6 lg:py-10 lg:px-8">
